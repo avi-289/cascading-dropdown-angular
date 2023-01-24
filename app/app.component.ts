@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from './Category';
 import { SelectService } from './select.service';
-import { SubCategory } from './SubCategory';
 
 @Component({
   selector: 'my-app',
@@ -11,20 +9,26 @@ import { SubCategory } from './SubCategory';
 export class AppComponent implements OnInit {
   name = 'Angular 5';
 
-  selectedCountry: Category = new Category(2, 'Brazil');
-  countries: Category[];
-  states: SubCategory[];
-
+  selectedCategory: { catId: number; catName: string } = {
+    catId: 1,
+    catName: 'USA',
+  };
+  categories: any[];
+  subCategories: any[];
   constructor(private selectService: SelectService) {}
 
   ngOnInit() {
-    this.countries = this.selectService.getCategories();
-    this.onSelect(this.selectedCountry.id);
+    this.categories = this.selectService.getCategories();
+    this.onSelect(this.selectedCategory.catId);
   }
 
-  onSelect(countryid) {
-    this.states = this.selectService
+  onSelect(catId) {
+    this.subCategories = this.selectService
       .getSubCategories()
-      .filter((item) => item.catId == countryid);
+      .filter((item) => item.catId == catId);
+    this.selectedCategory = this.selectService
+      .getCategories()
+      .filter((item) => item.catId == catId)[0];
+    console.log(this.subCategories);
   }
 }

@@ -3,23 +3,30 @@
 
 <label>Country:</label>
 <select
-  [(ngModel)]="selectedCountry.id"
+  [(ngModel)]="selectedCategory.catId"
   (change)="onSelect($event.target.value)"
 >
   <option value="0">--Select--</option>
-  <option *ngFor="let country of countries" value="{{ country.id }}">
-    {{ country.name }}
+  <option *ngFor="let cat of categories" value="{{ cat.catId }}">
+    {{ cat.catName }}
   </option>
 </select>
 
 <br /><br />
 
-<div>
+<div *ngIf="selectedCategory">
   <label>State:</label>
   <select>
     <option value="0">--Select--</option>
-    <option *ngFor="let state of states" value="{{ state.id }}">
-      {{ state.name }}
+    <option *ngFor="let subCat of subCategories" value="{{ subCat.id }}">
+      {{ subCat.subCatName }}
     </option>
   </select>
+</div>
+
+<div *ngIf="selectedCategory">
+  <p>{{ selectedCategory.catName }}</p>
+  <div *ngFor="let subCat of subCategories; let i = index">
+    <p>{{ subCat.subCatName }}</p>
+  </div>
 </div>

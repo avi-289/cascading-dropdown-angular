@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Category } from './Category';
-import { SubCategory } from './SubCategory';
 
 @Injectable()
 export class SelectService {
   getCategories() {
-    return [new Category(1, 'USA'), new Category(2, 'Brazil')];
+    return [
+      { catId: 1, catName: 'USA' },
+      { catId: 2, catName: 'BRAZIL' },
+    ];
   }
 
   getSubCategories() {
     return [
-      new SubCategory(1, 1, 'Arizona'),
-      new SubCategory(2, 1, 'Alaska'),
-      new SubCategory(3, 1, 'Florida'),
-      new SubCategory(4, 1, 'Hawaii'),
-      new SubCategory(5, 2, 'Sao Paulo'),
-      new SubCategory(6, 2, 'Rio de Janeiro'),
-      new SubCategory(7, 2, 'Minas Gerais'),
+      { subCatId: 1, catId: 1, subCatName: 'Arizona' },
+      { subCatId: 2, catId: 1, subCatName: 'Alaska' },
+      { subCatId: 3, catId: 1, subCatName: 'Florida' },
+      { subCatId: 4, catId: 1, subCatName: 'Hawaii' },
+      { subCatId: 5, catId: 2, subCatName: 'Sao Paulo' },
+      { subCatId: 6, catId: 2, subCatName: 'Rio de Janeiro' },
+      { subCatId: 7, catId: 2, subCatName: 'Minas Gerais' },
     ];
-  }
-
-  getServices() {
-    return [];
   }
 }
