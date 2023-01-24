@@ -7,7 +7,6 @@ import { SelectService } from './select.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  name = 'Angular 5';
   categories: any[];
   selectedCategory: any;
   selectedSubCategory: any;
