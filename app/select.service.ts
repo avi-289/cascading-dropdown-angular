@@ -20,4 +20,21 @@ export class SelectService {
       { subCatId: 7, catId: 2, subCatName: 'Minas Gerais' },
     ];
   }
+
+  getServices() {
+    return [
+      { serviceId: 'A', subCatId: 1, catId: 1, subCatName: 'Arizona' },
+      { serviceId: 'E', subCatId: 1, catId: 1, subCatName: 'Arizona' },
+      { serviceId: 'O', subCatId: 2, catId: 1, subCatName: 'Alaska' },
+      { serviceId: 'I', subCatId: 3, catId: 1, subCatName: 'Florida' },
+      { serviceId: 'U', subCatId: 3, catId: 1, subCatName: 'Florida' },
+      { serviceId: 'B', subCatId: 4, catId: 1, subCatName: 'Hawaii' },
+      { serviceId: 'C', subCatId: 5, catId: 2, subCatName: 'Sao Paulo' },
+      { serviceId: 'D', subCatId: 5, catId: 2, subCatName: 'Sao Paulo' },
+      { serviceId: 'M', subCatId: 5, catId: 2, subCatName: 'Sao Paulo' },
+      { serviceId: 'F', subCatId: 6, catId: 2, subCatName: 'Rio de Janeiro' },
+      { serviceId: 'G', subCatId: 7, catId: 2, subCatName: 'Minas Gerais' },
+      { serviceId: 'H', subCatId: 7, catId: 2, subCatName: 'Minas Gerais' },
+    ];
+  }
 }
