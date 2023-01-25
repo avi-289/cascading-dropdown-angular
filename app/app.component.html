@@ -18,6 +18,24 @@
   </select>
 </div>
 
-<div *ngIf="services">
-  <p *ngFor="let service of services">{{ service.serviceId }}</p>
+<div *ngIf="selectedServices && selectedSubCategories">
+  <p *ngFor="let service of selectedServices">{{ service.serviceId }}</p>
+</div>
+
+<div *ngIf="selectedServices?.length == 0">
+  <div *ngFor="let cat of categories">
+    <p>{{ cat.catName }}</p>
+    <div *ngFor="let subCat of subCategories">
+      <div *ngIf="cat.catId == subCat.catId">{{ subCat.subCatName }}</div>
+      <div *ngFor="let service of services">
+        <div
+          *ngIf="
+            service.subCatId == subCat.subCatId && cat.catId == subCat.catId
+          "
+        >
+          {{ service.serviceId }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

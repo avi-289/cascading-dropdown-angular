@@ -8,40 +8,43 @@ import { SelectService } from './select.service';
 })
 export class AppComponent implements OnInit {
   categories: any[];
+  services: any[];
+  subCategories: any[];
   selectedCategory: any;
   selectedSubCategory: any;
-  subCategories: any[];
-  services: any[];
+  selectedSubCategories: any[];
+  selectedServices: any[] = [];
   constructor(private selectService: SelectService) {}
 
   ngOnInit() {
+    this.services = this.selectService.getServices();
     this.categories = this.selectService.getCategories();
+    this.subCategories = this.selectService.getSubCategories();
     this.onSelect(this.selectedCategory.catId);
     this.onSelectSubCat(this.selectedSubCategory.subCatId);
   }
 
   onSelect(catId) {
-    this.subCategories = this.selectService
+    this.selectedSubCategories = this.selectService
       .getSubCategories()
       .filter((item) => item.catId == catId);
     this.selectedCategory = this.selectService
       .getCategories()
       .filter((item) => item.catId == catId)[0];
-    this.services = [];
+    this.selectedServices = [];
     console.log(this.subCategories);
   }
   onSelectSubCat(subCatId) {
     this.selectedSubCategory = this.selectService
       .getSubCategories()
       .filter((item) => item.subCatId == subCatId)[0];
-    console.log(this.selectedSubCategory);
     this.setServices(
       this.selectedCategory.catId,
       this.selectedSubCategory.subCatId
     );
   }
   setServices(catId, subCatId) {
-    this.services = this.selectService
+    this.selectedServices = this.selectService
       .getServices()
       .filter((item) => item.catId == catId && item.subCatId == subCatId);
     console.log(this.services);
