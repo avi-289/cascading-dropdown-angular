@@ -12,13 +12,16 @@
   <label>State:</label>
   <select (change)="onSelectSubCat($event.target.value)">
     <option value="0">--Select--</option>
-    <option *ngFor="let subCat of subCategories" value="{{ subCat.subCatId }}">
+    <option
+      *ngFor="let subCat of selectedSubCategories"
+      value="{{ subCat.subCatId }}"
+    >
       {{ subCat.subCatName }}
     </option>
   </select>
 </div>
 
-<div *ngIf="selectedServices && selectedSubCategories">
+<div *ngIf="selectedServices && selectedCategory && selectedSubCategory">
   <p *ngFor="let service of selectedServices">{{ service.serviceId }}</p>
 </div>
 

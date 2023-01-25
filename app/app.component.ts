@@ -25,28 +25,28 @@ export class AppComponent implements OnInit {
   }
 
   onSelect(catId) {
-    this.selectedSubCategories = this.selectService
-      .getSubCategories()
-      .filter((item) => item.catId == catId);
-    this.selectedCategory = this.selectService
-      .getCategories()
-      .filter((item) => item.catId == catId)[0];
+    this.selectedSubCategories = this.subCategories.filter(
+      (item) => item.catId == catId
+    );
+    this.selectedCategory = this.categories.filter(
+      (item) => item.catId == catId
+    )[0];
     this.selectedServices = [];
-    console.log(this.subCategories);
+    console.log(this.selectedSubCategories);
   }
   onSelectSubCat(subCatId) {
-    this.selectedSubCategory = this.selectService
-      .getSubCategories()
-      .filter((item) => item.subCatId == subCatId)[0];
+    this.selectedSubCategory = this.subCategories.filter(
+      (item) => item.subCatId == subCatId
+    )[0];
     this.setServices(
       this.selectedCategory.catId,
       this.selectedSubCategory.subCatId
     );
   }
   setServices(catId, subCatId) {
-    this.selectedServices = this.selectService
-      .getServices()
-      .filter((item) => item.catId == catId && item.subCatId == subCatId);
+    this.selectedServices = this.services.filter(
+      (item) => item.catId == catId && item.subCatId == subCatId
+    );
     console.log(this.services);
   }
 }
